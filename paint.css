@@ -25,3 +25,8 @@ button, select {
     margin: 0 5px; /* Add margin for spacing */
     padding: 5px; /* Add padding for better appearance */
 }
+
+#currentTool {
+    font-weight: bold; /* Make the tool text bold */
+    margin: 10px 0; /* Add margin for spacing */
+}
