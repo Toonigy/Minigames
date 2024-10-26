@@ -5,9 +5,9 @@ const chatInput = document.getElementById("chatInput");
 const username = localStorage.getItem("loggedInUser");
 
 // Display message in chat room with username
-function displayMessage(message, type = "user") {
+function displayMessage(message) {
     const messageElement = document.createElement("div");
-    messageElement.classList.add("chat-message", type === "user" ? "user-message" : "system-message");
+    messageElement.classList.add("chat-message");
     
     // Set the inner HTML to include the username and the message
     messageElement.innerHTML = `<strong>${username}:</strong> ${message}`;
@@ -19,12 +19,12 @@ function displayMessage(message, type = "user") {
 function sendMessage() {
     const message = chatInput.value.trim();
     if (message) {
-        displayMessage(message, "user");
+        displayMessage(message); // Display user's message
         chatInput.value = ""; // Clear input field
 
-        // Simulate a response from another user or system
+        // Simulate a response from another user or system (optional)
         setTimeout(() => {
-            displayMessage("Hello! How can I help you?", "system");
+            displayMessage("Hello! How can I help you?"); // Sample response
         }, 1000);
     }
 }
