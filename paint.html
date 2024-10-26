@@ -9,7 +9,14 @@
 <body>
     <div class="toolbar">
         <input type="color" id="colorPicker" value="#000000">
+        <select id="brushSize">
+            <option value="5">Small</option>
+            <option value="10">Medium</option>
+            <option value="15">Large</option>
+        </select>
         <button id="clearButton">Clear</button>
+        <button id="solidBrush">Solid</button>
+        <button id="dottedBrush">Dotted</button>
     </div>
     <canvas id="paintCanvas"></canvas>
     <script src="paint.js"></script>
