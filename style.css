@@ -99,3 +99,28 @@ button[onclick*="profile.html"]:hover {
         margin-right: 5px;
     }
 }
+/* Individual chat message styles */
+.chat-message {
+    padding: 8px;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+/* User message styles */
+.user-message {
+    background-color: #5C6BC0;
+    color: white;
+    text-align: left;
+}
+
+/* System message styles */
+.system-message {
+    background-color: #ddd;
+    color: #333;
+    text-align: left;
+}
+
+/* Styling for usernames in chat messages */
+.chat-message strong {
+    color: #1e88e5; /* Change username color */
+}
