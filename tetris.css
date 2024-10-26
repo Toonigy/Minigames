@@ -26,3 +26,25 @@ canvas {
 .controls {
     margin-top: 20px;
 }
+
+.mobile-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mobile-controls button {
+    margin: 5px;
+    width: 40px; /* Width of the buttons */
+    height: 40px; /* Height of the buttons */
+    font-size: 20px; /* Size of the text inside buttons */
+    background-color: #444; /* Button background */
+    color: white; /* Button text color */
+    border: none; /* Remove borders */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.mobile-controls button:hover {
+    background-color: #666; /* Change color on hover */
+}
