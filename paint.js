@@ -9,6 +9,7 @@ const solidBrushButton = document.getElementById('solidBrush');
 const dottedBrushButton = document.getElementById('dottedBrush');
 const currentToolText = document.getElementById('currentTool');
 const debugButton = document.getElementById('debugButton'); // Debug button
+const logContent = document.getElementById('logContent'); // Troubleshooting log area
 
 canvas.width = window.innerWidth - 40; // Responsive width
 canvas.height = window.innerHeight - 100; // Responsive height
@@ -23,11 +24,18 @@ function updateToolText() {
     currentToolText.textContent = `Current Tool: ${brushType}, Size: ${brushSize}`; // Update text
 }
 
+// Function to log messages to the troubleshooting area
+function logMessage(message) {
+    const timestamp = new Date().toLocaleTimeString(); // Get current time
+    logContent.innerHTML += `${timestamp}: ${message}\n`; // Append message with timestamp
+}
+
 // Start drawing
 canvas.addEventListener('mousedown', (e) => {
     isDrawing = true;
     ctx.beginPath(); // Start a new path
     ctx.moveTo(e.clientX - canvas.getBoundingClientRect().left, e.clientY - canvas.getBoundingClientRect().top);
+    logMessage("Started drawing"); // Log message
 });
 
 // Draw on canvas
@@ -52,17 +60,20 @@ canvas.addEventListener('mousemove', (e) => {
 canvas.addEventListener('mouseup', () => {
     isDrawing = false;
     ctx.closePath(); // Close the path
+    logMessage("Stopped drawing"); // Log message
 });
 
 // Clear the canvas
 clearButton.addEventListener('click', () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+    logMessage("Canvas cleared"); // Log message
 });
 
 // Update brush size
 brushSizeSelect.addEventListener('change', (e) => {
     brushSize = e.target.value; // Update brush size based on selection
     updateToolText(); // Update tool text
+    logMessage(`Brush size changed to ${brushSize}`); // Log message
 });
 
 // Brush style selection
@@ -71,6 +82,7 @@ solidBrushButton.addEventListener('click', () => {
     solidBrushButton.style.backgroundColor = 'lightgray'; // Optional visual feedback
     dottedBrushButton.style.backgroundColor = ''; // Reset dotted button
     updateToolText(); // Update tool text
+    logMessage("Switched to solid brush"); // Log message
 });
 
 dottedBrushButton.addEventListener('click', () => {
@@ -78,6 +90,7 @@ dottedBrushButton.addEventListener('click', () => {
     dottedBrushButton.style.backgroundColor = 'lightgray'; // Optional visual feedback
     solidBrushButton.style.backgroundColor = ''; // Reset solid button
     updateToolText(); // Update tool text
+    logMessage("Switched to dotted brush"); // Log message
 });
 
 // Initialize tool text
@@ -85,10 +98,10 @@ updateToolText(); // Set initial tool text
 
 // Debug button functionality
 debugButton.addEventListener('click', () => {
-    console.log('Debug Info:');
-    console.log(`Is Drawing: ${isDrawing}`);
-    console.log(`Brush Size: ${brushSize}`);
-    console.log(`Current Color: ${colorPicker.value}`);
-    console.log(`Brush Style: ${isDotted ? 'Dotted' : 'Solid'}`);
-    console.log('Canvas Size:', canvas.width, 'x', canvas.height);
+    logMessage('Debug Info:');
+    logMessage(`Is Drawing: ${isDrawing}`);
+    logMessage(`Brush Size: ${brushSize}`);
+    logMessage(`Current Color: ${colorPicker.value}`);
+    logMessage(`Brush Style: ${isDotted ? 'Dotted' : 'Solid'}`);
+    logMessage(`Canvas Size: ${canvas.width} x ${canvas.height}`);
 });
