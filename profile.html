@@ -8,6 +8,15 @@
 </head>
 <body>
   <h1>Welcome, <span id="usernameDisplay"></span>!</h1>
+  
+  <!-- Profile Picture Section -->
+  <div class="profile-picture">
+    <canvas id="defaultProfilePic" width="100" height="100"></canvas>
+    <img id="profileImage" src="" alt="Profile Picture" style="display: none;">
+  </div>
+  
+  <input type="file" id="uploadProfilePic" accept="image/*" onchange="uploadPicture(event)">
+  
   <p>This is your profile page.</p>
   <button onclick="logout()">Logout</button>
 
