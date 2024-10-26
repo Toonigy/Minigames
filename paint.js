@@ -8,11 +8,12 @@ const brushSizeSelect = document.getElementById('brushSize');
 const solidBrushButton = document.getElementById('solidBrush');
 const dottedBrushButton = document.getElementById('dottedBrush');
 const currentToolText = document.getElementById('currentTool');
-const debugButton = document.getElementById('debugButton'); // Debug button
-const logContent = document.getElementById('logContent'); // Troubleshooting log area
+const debugButton = document.getElementById('debugButton');
+const logContent = document.getElementById('logContent');
 
-canvas.width = window.innerWidth - 40; // Responsive width
-canvas.height = window.innerHeight - 100; // Responsive height
+// Set canvas dimensions
+canvas.width = window.innerWidth - 40; // Adjust as necessary
+canvas.height = window.innerHeight - 100; // Adjust as necessary
 
 let isDrawing = false;
 let brushSize = 5; // Default brush size
