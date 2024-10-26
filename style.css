@@ -1,160 +1,101 @@
-/* General Page Styles */
+/* General styles for the body */
 body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
 }
 
-h1 {
-  color: #333;
-  font-size: 24px;
-  margin-bottom: 10px;
+/* Chat container styles */
+.chat-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Profile Picture Container */
-.profile-picture {
-  width: 100px;
-  height: 100px;
-  margin: 20px auto;
-  position: relative;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid #5C6BC0; /* Border color for profile picture */
+/* Chat messages display */
+.chat-messages {
+    height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
 }
 
-/* Canvas (Default Profile Picture) */
-canvas {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  display: block;
-  background-color: #ddd;
+/* Individual chat message styles */
+.chat-message {
+    padding: 8px;
+    border-radius: 5px;
+    margin: 5px 0;
 }
 
-/* Uploaded Profile Image */
-#profileImage {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  display: none; /* Hidden until an image is uploaded */
+/* User message styles */
+.user-message {
+    background-color: #5C6BC0;
+    color: white;
+    text-align: left;
 }
 
-/* Input File Style */
-input[type="file"] {
-  margin-top: 10px;
-  padding: 5px;
-  font-size: 14px;
+/* System message styles */
+.system-message {
+    background-color: #ddd;
+    color: #333;
+    text-align: left;
 }
 
-/* Form Elements for Login and Signup */
-input[type="text"],
-input[type="password"],
+/* Input area styles */
+.chat-input {
+    display: flex;
+    align-items: center;
+}
+
+/* Input field styles */
+#chatInput {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* Button styles */
 button {
-  width: 80%;
-  padding: 10px;
-  margin: 8px 0;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-button {
-  background-color: #5C6BC0;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5C6BC0;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #3f51b5;
+    background-color: #4a54a1;
 }
 
-/* Profile Page Layout */
-#usernameDisplay {
-  font-size: 20px;
-  font-weight: bold;
-  color: #5C6BC0;
+/* Back button styles */
+button[onclick*="profile.html"] {
+    background-color: #f44336; /* Different color for back button */
 }
 
-p {
-  font-size: 16px;
-  color: #666;
+button[onclick*="profile.html"]:hover {
+    background-color: #d32f2f; /* Darker red on hover */
 }
 
-button.logout {
-  background-color: #f44336;
-}
+/* Responsive design */
+@media (max-width: 600px) {
+    .chat-container {
+        width: 95%;
+        padding: 10px;
+    }
 
-button.logout:hover {
-  background-color: #d32f2f;
-}
-/* Chat Room Styles */
-.chat-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-h2 {
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.chat-messages {
-  width: 100%;
-  height: 400px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  overflow-y: scroll;
-  background-color: #f9f9f9;
-}
-
-.chat-message {
-  padding: 5px;
-  margin: 5px 0;
-  border-radius: 5px;
-}
-
-.user-message {
-  background-color: #5C6BC0;
-  color: white;
-  align-self: flex-start;
-}
-
-.system-message {
-  background-color: #ddd;
-  color: #333;
-  align-self: flex-end;
-}
-
-.chat-input {
-  display: flex;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.chat-input input[type="text"] {
-  flex: 1;
-  padding: 10px;
-  font-size: 16px;
-}
-
-.chat-input button {
-  padding: 10px 20px;
-  background-color: #5C6BC0;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-.chat-input button:hover {
-  background-color: #3f51b5;
+    #chatInput {
+        margin-right: 5px;
+    }
 }
