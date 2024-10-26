@@ -4,6 +4,10 @@ const canvas = document.getElementById("tetris");
 const context = canvas.getContext("2d");
 const bgm = document.getElementById("bgm");
 const startButton = document.getElementById("startButton");
+const leftButton = document.getElementById("leftButton");
+const rightButton = document.getElementById("rightButton");
+const rotateButton = document.getElementById("rotateButton");
+const dropButton = document.getElementById("dropButton");
 
 const colors = [
     null,
@@ -118,9 +122,51 @@ function update() {
     drawTetromino();
 }
 
+// Mobile Control Functions
+function moveLeft() {
+    currentX--;
+    if (collide()) {
+        currentX++;
+    }
+}
+
+function moveRight() {
+    currentX++;
+    if (collide()) {
+        currentX--;
+    }
+}
+
+function rotateTetromino() {
+    const rotated = currentTetromino[0].map((_, index) => currentTetromino.map(row => row[index]).reverse());
+    const previousTetromino = currentTetromino;
+    currentTetromino = rotated;
+
+    if (collide()) {
+        currentTetromino = previousTetromino; // revert to previous state if collision
+    }
+}
+
+function dropTetromino() {
+    currentY++;
+    if (collide()) {
+        currentY--;
+        merge();
+        removeCompleteLines();
+        newTetromino();
+    }
+}
+
+// Event Listeners for Mobile Controls
 startButton.addEventListener("click", () => {
     startButton.disabled = true; // Disable the button during the game
     bgm.play(); // Play background music
     newTetromino();
     gameInterval = setInterval(update, 1000); // Game update every second
 });
+
+// Mobile Control Button Events
+leftButton.addEventListener("click", moveLeft);
+rightButton.addEventListener("click", moveRight);
+rotateButton.addEventListener("click", rotateTetromino);
+dropButton.addEventListener("click", dropTetromino);
