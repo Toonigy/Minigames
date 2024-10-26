@@ -12,18 +12,18 @@
 
     <!-- Profile Picture Section -->
     <div class="profile-picture">
-      <!-- Canvas for Default Profile Picture -->
       <canvas id="defaultProfilePic" width="100" height="100"></canvas>
-      
-      <!-- Image Element for Uploaded Profile Picture -->
       <img id="profileImage" src="" alt="Profile Picture" style="display: none;">
     </div>
-    
+
     <!-- Upload Profile Picture -->
     <input type="file" id="uploadProfilePic" accept="image/*" onchange="uploadPicture(event)">
     
     <p>This is your profile page.</p>
     <button onclick="logout()">Logout</button>
+    
+    <!-- Button to go to chat room -->
+    <button onclick="goToChatRoom()">Go to Chat Room</button>
   </div>
 
   <script src="script.js"></script>
