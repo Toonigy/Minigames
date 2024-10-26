@@ -1,0 +1,63 @@
+/* signup.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light gray background for the entire page */
+    margin: 0;
+    padding: 20px; /* Padding around the body */
+}
+
+.signup-container {
+    max-width: 400px; /* Maximum width for the signup form */
+    margin: auto; /* Center the form horizontally */
+    padding: 20px; /* Padding inside the form */
+    background: #ffffff; /* White background for the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+h1 {
+    text-align: center; /* Center the heading */
+    color: #333; /* Dark gray color for the heading */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%; /* Full width inputs */
+    padding: 10px; /* Padding inside the input fields */
+    margin: 10px 0; /* Margin above and below each input */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+button {
+    width: 100%; /* Full width buttons */
+    padding: 10px; /* Padding inside buttons */
+    font-size: 16px; /* Font size */
+    color: white; /* White text color */
+    background-color: #007BFF; /* Blue button color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+p {
+    text-align: center; /* Center the paragraph text */
+    margin-top: 15px; /* Space above the paragraph */
+}
+
+a {
+    color: #007BFF; /* Link color */
+    text-decoration: none; /* Remove underline from links */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline links on hover */
+}
