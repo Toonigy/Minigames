@@ -20,3 +20,8 @@ canvas {
     background-color: #ffffff; /* White background for drawing */
     cursor: crosshair; /* Change cursor to crosshair */
 }
+
+button, select {
+    margin: 0 5px; /* Add margin for spacing */
+    padding: 5px; /* Add padding for better appearance */
+}
