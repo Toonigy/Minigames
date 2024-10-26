@@ -1,59 +1,71 @@
-// Show Signup and Login Forms
-function showSignup() {
-  document.getElementById("loginForm").style.display = "none";
-  document.getElementById("signupForm").style.display = "block";
-}
+// Function to draw a default profile picture on the canvas
+function drawDefaultProfilePic() {
+  const canvas = document.getElementById("defaultProfilePic");
+  const ctx = canvas.getContext("2d");
 
-function showLogin() {
-  document.getElementById("signupForm").style.display = "none";
-  document.getElementById("loginForm").style.display = "block";
-}
+  // Set a circular shape with a background color
+  ctx.fillStyle = "#5C6BC0"; // Light blue background color
+  ctx.beginPath();
+  ctx.arc(50, 50, 50, 0, Math.PI * 2, true); // Circle in center
+  ctx.fill();
 
-// Signup Function
-function signup() {
-  const username = document.getElementById("signupUsername").value;
-  const password = document.getElementById("signupPassword").value;
+  // Draw initials (default "U")
+  ctx.fillStyle = "#FFFFFF"; // White color for text
+  ctx.font = "30px Arial";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("U", 50, 50); // Example initial for "User"
 
-  if (username && password) {
-    localStorage.setItem(username, password);
-    alert("Signup successful!");
-    showLogin();
+  // Check if a custom profile picture is available
+  const storedImage = localStorage.getItem("profileImage");
+  if (storedImage) {
+    showCustomProfilePic(storedImage);
   } else {
-    alert("Please fill in all fields.");
+    canvas.style.display = "block";
   }
 }
 
-// Login Function
-function login() {
-  const username = document.getElementById("loginUsername").value;
-  const password = document.getElementById("loginPassword").value;
-  const storedPassword = localStorage.getItem(username);
+// Display a custom profile picture
+function showCustomProfilePic(imageSrc) {
+  const imgElement = document.getElementById("profileImage");
+  imgElement.src = imageSrc;
+  imgElement.style.display = "block";
+  document.getElementById("defaultProfilePic").style.display = "none";
+}
 
-  if (password === storedPassword) {
-    localStorage.setItem("loggedInUser", username);
-    window.location.href = "profile.html";
-  } else {
-    alert("Invalid username or password.");
+// Upload a custom profile picture
+function uploadPicture(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const imageSrc = e.target.result;
+      localStorage.setItem("profileImage", imageSrc); // Save image in localStorage
+      showCustomProfilePic(imageSrc); // Show the custom profile picture
+    };
+    reader.readAsDataURL(file);
   }
 }
 
-// Display Username on Profile Page
+// Load the profile page with the user's data
 function loadProfile() {
   const username = localStorage.getItem("loggedInUser");
   if (username) {
     document.getElementById("usernameDisplay").innerText = username;
+    drawDefaultProfilePic(); // Draw the default profile picture if no custom one exists
   } else {
-    window.location.href = "index.html";
+    window.location.href = "index.html"; // Redirect if not logged in
   }
 }
 
-// Logout Function
+// Logout function to clear user data and redirect to the login page
 function logout() {
   localStorage.removeItem("loggedInUser");
+  localStorage.removeItem("profileImage");
   window.location.href = "index.html";
 }
 
-// Check if User is Logged In on Profile Page
+// If on profile page, load the profile data
 if (window.location.pathname.endsWith("profile.html")) {
   loadProfile();
 }
