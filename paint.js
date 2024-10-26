@@ -8,6 +8,7 @@ const brushSizeSelect = document.getElementById('brushSize');
 const solidBrushButton = document.getElementById('solidBrush');
 const dottedBrushButton = document.getElementById('dottedBrush');
 const currentToolText = document.getElementById('currentTool');
+const debugButton = document.getElementById('debugButton'); // Debug button
 
 canvas.width = window.innerWidth - 40; // Responsive width
 canvas.height = window.innerHeight - 100; // Responsive height
@@ -81,3 +82,13 @@ dottedBrushButton.addEventListener('click', () => {
 
 // Initialize tool text
 updateToolText(); // Set initial tool text
+
+// Debug button functionality
+debugButton.addEventListener('click', () => {
+    console.log('Debug Info:');
+    console.log(`Is Drawing: ${isDrawing}`);
+    console.log(`Brush Size: ${brushSize}`);
+    console.log(`Current Color: ${colorPicker.value}`);
+    console.log(`Brush Style: ${isDotted ? 'Dotted' : 'Solid'}`);
+    console.log('Canvas Size:', canvas.width, 'x', canvas.height);
+});
